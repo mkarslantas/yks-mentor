@@ -42,7 +42,7 @@ const configureApp = () => {
   // Rate limiting for production
   const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: process.env.NODE_ENV === 'production' ? 100 : 1000,
+    max: process.env.NODE_ENV === "production" ? 1000 : 1000,
     message: 'Too many requests from this IP, please try again later.',
     standardHeaders: true,
     legacyHeaders: false,
@@ -52,7 +52,7 @@ const configureApp = () => {
   // Stricter rate limiting for auth endpoints
   const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: process.env.NODE_ENV === 'production' ? 5 : 100,
+    max: process.env.NODE_ENV === "production" ? 50 : 100,
     message: 'Too many authentication attempts, please try again later.',
   });
   app.use('/api/auth/login', authLimiter);
